@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habib-ur-Rehman | Canva Designer & AI-Powered Visual Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0c1b;
+            --bg-card: #1a162b;
+            --bg-card-hover: #231e38;
+            --accent-purple: #7d2ae8;
+            --accent-cyan: #00c4cc;
+            --accent-magenta: #e82a78;
+            --text-main: #f3f1f8;
+            --text-muted: #a19bb5;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-canva: linear-gradient(135deg, #7d2ae8 0%, #00c4cc 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #2a2444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+        /* Preloader */
+        html.loading, html.loading body { overflow: hidden; height: 100%; }
+        #preloader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--bg-dark);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-ring-wrap { position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
+        .loader-ring-wrap svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-90deg); animation: loaderSpin 2.2s linear infinite; }
+        .loader-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 6; }
+        .loader-progress { fill: none; stroke: url(#loaderGradient); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 339.292; stroke-dashoffset: 339.292; transition: stroke-dashoffset 0.15s linear; }
+        @keyframes loaderSpin { 100% { transform: rotate(270deg); } }
+        .loader-core { width: 78px; height: 78px; border-radius: 50%; background: var(--gradient-canva); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(125, 42, 232, 0.45); z-index: 1; animation: loaderPulse 1.8s ease-in-out infinite; }
+        .loader-core span { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; letter-spacing: -0.5px; }
+        @keyframes loaderPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .loader-percent { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.6rem; color: #fff; letter-spacing: 1px; }
+        .loader-percent span { background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .loader-label { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+
+        .bg-glow { position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.25; z-index: -1; pointer-events: none; animation: pulseGlow 8s ease-in-out infinite alternate; }
+        .glow-1 { width: 450px; height: 450px; background: var(--accent-purple); top: -100px; left: -100px; }
+        .glow-2 { width: 400px; height: 400px; background: var(--accent-cyan); bottom: 10%; right: -50px; }
+        @keyframes pulseGlow { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(30px, -20px); } }
+
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 18px 8%; background: rgba(15, 12, 27, 0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center; transition: var(--transition);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.4rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.5px; text-decoration: none; color: #fff; }
+        .logo-icon { width: 38px; height: 38px; background: var(--gradient-canva); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(125, 42, 232, 0.4); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: var(--transition); position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background: var(--gradient-canva); transition: var(--transition); border-radius: 2px; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-btns { display: flex; align-items: center; gap: 15px; }
+        .btn-primary { background: var(--gradient-canva); color: #fff; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(125, 42, 232, 0.35); transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(125, 42, 232, 0.5); }
+        .btn-outline { background: transparent; color: #fff; padding: 9px 22px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(255, 255, 255, 0.2); transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-outline:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0, 196, 204, 0.05); }
+
+        .hero { padding: 150px 8% 80px; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 50px; position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(125, 42, 232, 0.15); border: 1px solid rgba(125, 42, 232, 0.3); border-radius: 20px; color: var(--accent-cyan); font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+        .hero-title { font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px; font-family: 'Space Grotesk', sans-serif; }
+        .text-gradient { background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 35px; max-width: 560px; line-height: 1.7; }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .hero-visual { position: relative; display: flex; justify-content: center; }
+        .hero-photo-frame { width: 100%; max-width: 380px; aspect-ratio: 1/1.05; border-radius: 28px; position: relative; padding: 6px; background: var(--gradient-canva); box-shadow: 0 25px 50px rgba(0,0,0,0.45); transform: rotate(-2deg); transition: var(--transition); }
+        .hero-photo-frame:hover { transform: rotate(0deg); }
+        .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; display: block; background: #131021; }
+        .floating-badge { position: absolute; background: rgba(26, 22, 43, 0.92); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 10px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); animation: float 4s ease-in-out infinite alternate; }
+        .fb-1 { top: 10px; right: -10px; }
+        .fb-2 { bottom: 10px; left: -20px; animation-delay: 2s; }
+        @keyframes float { 0% { transform: translateY(0px); } 100% { transform: translateY(-12px); } }
+        .fb-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; }
+
+        .stats-section { padding: 40px 8%; margin: 20px 8% 60px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+        .stat-item { padding: 15px; position: relative; }
+        .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: var(--border-color); }
+        .stat-number { font-size: 2.8rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+        .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+
+        .section-header { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+        .section-tag { color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 15px; }
+        .section-desc { color: var(--text-muted); font-size: 1rem; }
+
+        .about { padding: 80px 8%; }
+        .about-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 28px; padding: 55px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .about-top { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 10px; }
+        .about-top p { flex: 1; min-width: 280px; }
+        .about-quote { flex-shrink: 0; max-width: 280px; padding: 24px; border-left: 3px solid var(--accent-cyan); background: rgba(0, 196, 204, 0.06); border-radius: 0 16px 16px 0; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; color: #fff; line-height: 1.5; }
+        .about-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0 30px; }
+        .about-pill { background: rgba(125, 42, 232, 0.12); border: 1px solid rgba(125, 42, 232, 0.3); color: var(--accent-cyan); padding: 7px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .feature-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); padding: 18px; border-radius: 16px; transition: var(--transition); display: flex; gap: 14px; align-items: flex-start; }
+        .feature-box:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(125, 42, 232, 0.4); transform: translateY(-3px); }
+        .feature-box .fb-ic { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; background: rgba(0, 196, 204, 0.12); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .feature-box h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .feature-box p { font-size: 0.82rem; color: var(--text-muted); }
+
+        .portfolio { padding: 80px 8%; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .portfolio-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; transition: var(--transition); position: relative; }
+        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(125, 42, 232, 0.5); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
+        .portfolio-img { width: 100%; height: 280px; position: relative; overflow: hidden; background: #151124; }
+        .portfolio-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .portfolio-card:hover .portfolio-img img { transform: scale(1.08); }
+        .portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 12, 27, 0.75); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; gap: 12px; opacity: 0; transition: var(--transition); }
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+        .overlay-btn { background: #fff; color: var(--bg-dark); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; transition: var(--transition); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        .overlay-btn:hover { transform: scale(1.15); background: var(--accent-cyan); color: #fff; }
+        .portfolio-info { padding: 20px; }
+        .portfolio-category { font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+        .portfolio-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .portfolio-stats { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 14px; }
+        .portfolio-stats span { display: inline-flex; align-items: center; gap: 5px; }
+
+        .behance-banner { margin: 60px 8% 80px; background: linear-gradient(135deg, rgba(0, 92, 255, 0.15) 0%, rgba(125, 42, 232, 0.15) 100%); border: 1px solid rgba(0, 92, 255, 0.3); border-radius: 24px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+        .behance-info { max-width: 600px; }
+        .behance-info h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif; }
+        .behance-info p { color: var(--text-muted); font-size: 0.95rem; }
+        .btn-behance { background: #0057ff; color: #fff; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 5px 20px rgba(0, 87, 255, 0.4); transition: var(--transition); }
+        .btn-behance:hover { transform: translateY(-3px); background: #0046cd; box-shadow: 0 8px 25px rgba(0, 87, 255, 0.6); }
+
+        .services { padding: 80px 8%; background: rgba(26, 22, 43, 0.4); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; border-radius: 20px; transition: var(--transition); position: relative; overflow: hidden; }
+        .service-card:hover { transform: translateY(-6px); border-color: rgba(0, 196, 204, 0.4); background: var(--bg-card-hover); }
+        .service-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(125, 42, 232, 0.15); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .service-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+        .service-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+        .contact { padding: 80px 8%; position: relative; }
+        .contact-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 28px; padding: 50px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
+        .contact-info-title { font-size: 2rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 15px; }
+        .contact-info-desc { color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; }
+        .contact-detail { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .detail-icon { width: 45px; height: 45px; border-radius: 12px; background: rgba(125, 42, 232, 0.15); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .detail-text h5 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .detail-text p { font-size: 0.95rem; font-weight: 600; color: #fff; }
+        .detail-text a { color: #fff; text-decoration: none; }
+        .detail-text a:hover { color: var(--accent-cyan); }
+        .social-links { display: flex; gap: 12px; margin-top: 30px; }
+        .social-icon { width: 42px; height: 42px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: var(--transition); }
+        .social-icon:hover { background: var(--gradient-canva); color: #fff; transform: translateY(-3px); border-color: transparent; }
+        .contact-form { display: flex; flex-direction: column; gap: 18px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+        .form-input { background: #131021; border: 1px solid var(--border-color); padding: 14px 18px; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: var(--transition); }
+        .form-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 15px rgba(125, 42, 232, 0.25); }
+        textarea.form-input { resize: vertical; min-height: 120px; }
+
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--bg-card); border: 1px solid var(--accent-cyan); color: #fff; padding: 15px 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; transform: translateY(100px); opacity: 0; transition: var(--transition); z-index: 2000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent-cyan); font-size: 1.2rem; }
+
+        footer { padding: 30px 8%; background: #0a0813; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; gap: 15px; }
+
+        @media (max-width: 992px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+            .hero-desc { margin: 0 auto 35px; }
+            .hero-actions { justify-content: center; }
+            .about-card { padding: 30px 22px; }
+            .about-top { flex-direction: column; }
+            .about-quote { max-width: 100%; }
+            .contact-box { grid-template-columns: 1fr; }
+            .stats-section { grid-template-columns: 1fr; }
+            .stat-item:not(:last-child)::after { display: none; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.3rem; }
+            .behance-banner { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring-wrap">
+            <svg viewBox="0 0 120 120">
+                <defs>
+                    <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#7d2ae8"/>
+                        <stop offset="100%" stop-color="#00c4cc"/>
+                    </linearGradient>
+                </defs>
+                <circle class="loader-track" cx="60" cy="60" r="54"/>
+                <circle class="loader-progress" id="loaderProgress" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="loader-core"><span>HR</span></div>
+        </div>
+        <div class="loader-percent"><span id="loaderPercentNum">0</span>%</div>
+        <div class="loader-label">Loading Portfolio</div>
+    </div>
+
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <span>Habib-ur-<span style="color: var(--accent-cyan);">Rehman</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">My Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-btns">
+            <a href="#contact" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> Canva Designer & AI-Powered Visual Designer</div>
+            <h1 class="hero-title">Crafting <span class="text-gradient">Visual Perfection</span> For Brands.</h1>
+            <p class="hero-desc">Hi, I'm Habib-ur-Rehman — a creative Canva &amp; AI-powered visual designer based in Karachi, Pakistan. I help businesses turn ideas into premium visual experiences: product packaging, posters, banners, and social media creatives that combine strategy with AI-assisted workflows.</p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn-primary"><i class="fa-solid fa-layer-group"></i> Explore My Work</a>
+                <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="btn-outline"><i class="fa-brands fa-behance"></i> Behance Portfolio</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-photo-frame">
+                <img src="dwe (2).png" alt="Habib-ur-Rehman">
+            </div>
+            <div class="floating-badge fb-1">
+                <div class="fb-icon" style="background: var(--accent-purple);"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Freelance</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Open for Projects</div>
+                </div>
+            </div>
+            <div class="floating-badge fb-2">
+                <div class="fb-icon" style="background: var(--accent-cyan);"><i class="fa-solid fa-map-pin"></i></div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Karachi, PK</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Visual Designer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Happy & Satisfied Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Graphics & Assets Completed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Projects Delivered On-Time</div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-tag">About Habib-ur-Rehman</span>
+            <h2 class="section-title">Bringing Creative Ideas to Life with Canva & AI</h2>
+            <p class="section-desc">A quick look at how I work and what I bring to every project.</p>
+        </div>
+        <div class="about-card">
+            <div class="about-top">
+                <div class="about-quote">"Great design isn't just<br>seen — it's remembered."</div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin: 0;">I help businesses transform ideas into premium visual experiences through original, purpose-driven design and AI-powered creative solutions. Every project is designed from scratch — combining creative strategy, modern design principles, and AI-assisted workflows to deliver unique visuals that reflect each brand's identity and goals.</p>
+            </div>
+            <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px;">My expertise spans product packaging, posters, banners, social media creatives, and marketing materials — all 100% original and customized to your exact requirements.</p>
+
+            <div class="about-pills">
+                <span class="about-pill">AI-Powered Design</span>
+                <span class="about-pill">Product Packaging</span>
+                <span class="about-pill">Posters & Banners</span>
+                <span class="about-pill">Social Media Creatives</span>
+            </div>
+
+            <div class="about-features">
+                <div class="feature-box">
+                    <div class="fb-ic"><i class="fa-solid fa-palette"></i></div>
+                    <div><h4>Canva Magic</h4><p>Fully editable, structured templates for easy customization.</p></div>
+                </div>
+                <div class="feature-box">
+                    <div class="fb-ic"><i class="fa-solid fa-bolt"></i></div>
+                    <div><h4>Fast Turnaround</h4><p>Quick delivery without compromising on visual polish.</p></div>
+                </div>
+                <div class="feature-box">
+                    <div class="fb-ic"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div><h4>High Conversion</h4><p>Designs tuned for marketing performance and brand recall.</p></div>
+                </div>
+                <div class="feature-box">
+                    <div class="fb-ic"><i class="fa-solid fa-headset"></i></div>
+                    <div><h4>100% Satisfaction</h4><p>Dedicated revisions and friendly client communication.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <span class="section-tag">Portfolio Showcase</span>
+            <h2 class="section-title">My Recent Featured Work</h2>
+            <p class="section-desc">Live projects straight from my Behance portfolio.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/26ef5c254595989.Y3JvcCw0MzMsMzM4LDU2MiwxNTE.jpg" alt="Engro Steel Mills">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/254595989/Engro-Steel-Mills" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Corporate / Industrial</span>
+                    <h3 class="portfolio-title">Engro Steel Mills</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/6648e0253474143.Y3JvcCwxMjU0LDk4MCwwLDA.png" alt="Delicious Cupcake Muffin Social Media Banner Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/253474143/Delicious-Cupcake-Muffin-Social-Media-Banner-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Social Media</span>
+                    <h3 class="portfolio-title">Delicious Cupcake Muffin Social Banner</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e84726253222471.Y3JvcCw0NjQsMzYzLDQ0NCw2MDM.png" alt="Red Bull – AI-Powered Energy Drink Advertising Poster">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/253222471/Red-Bull-AI-Powered-Energy-Drink-Advertising-Poster" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">AI-Powered Ad</span>
+                    <h3 class="portfolio-title">Red Bull – Energy Drink Poster</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/3d7fbd252681579.Y3JvcCw1MTUsNDAzLDM4NCwzMTE.png" alt="Fanta Orange – A Burst of Refreshing Citrus Energy">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252681579/Fanta-Orange-A-Burst-of-Refreshing-Citrus-Energy" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Fanta Orange – Citrus Energy</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/727378252616481.Y3JvcCwxNTg2LDEyNDEsMCw1MDI.png" alt="Premium Fragrance Promotional Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252616481/Premium-Fragrance-Promotional-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Premium Fragrance Promotional Design</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/23584c252262997.Y3JvcCwxNzkyLDE0MDIsNjIxLDMzNw.png" alt="Premium Pepsi Product Advertisement Poster">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252262997/Premium-Pepsi-Product-Advertisement-Poster" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Premium Pepsi Advertisement Poster</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/23cd08252020451.Y3JvcCwxMDg2LDg0OSwzODEsNDE5.png" alt="Premium Burger Promotional Poster Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252020451/Premium-Burger-Promotional-Poster-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Social Media</span>
+                    <h3 class="portfolio-title">Premium Burger Promotional Poster</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="behance-banner">
+        <div class="behance-info">
+            <h3>Explore Full Portfolio on Behance</h3>
+            <p>Check out my latest case studies, raw design files, and complete brand design projects live on my Behance profile.</p>
+        </div>
+        <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="btn-behance"><i class="fa-brands fa-behance"></i> Visit Behance Portfolio</a>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">What I Offer</span>
+            <h2 class="section-title">Design Solutions Crafted For You</h2>
+            <p class="section-desc">Elevating your visual presence with creative and tailored graphic services.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3 class="service-title">Product Packaging</h3>
+                <p class="service-desc">Clean, shelf-ready packaging design that makes products stand out and builds brand trust.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-hashtag"></i></div>
+                <h3 class="service-title">Social Media Graphics</h3>
+                <p class="service-desc">Eye-catching posts, stories, reels covers, and carousels crafted to boost engagement and followers.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+                <h3 class="service-title">Posters & Banners</h3>
+                <p class="service-desc">High-CTR banner ads and promotional posters for websites, social platforms, and campaigns.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3 class="service-title">AI-Powered Visual Design</h3>
+                <p class="service-desc">AI-assisted creative workflows that speed up concepting while keeping a human, brand-first touch.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3 class="service-title">Advertising Creatives</h3>
+                <p class="service-desc">Scroll-stopping ad creatives for Meta, Google, and print — built to convert, not just look good.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-copyright"></i></div>
+                <h3 class="service-title">Brand Identity</h3>
+                <p class="service-desc">Logos, color systems, and visual guidelines that give a brand a consistent, recognizable look.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <div class="contact-info">
+                <h2 class="contact-info-title">Let's Work <span class="text-gradient">Together</span></h2>
+                <p class="contact-info-desc">Have a graphic design project, Canva requirement, or brand strategy in mind? Send me a message and let's create something extraordinary!</p>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="detail-text">
+                        <h5>Call / WhatsApp</h5>
+                        <p><a href="https://wa.me/923306669162" target="_blank">0330 6669162</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="detail-text">
+                        <h5>Email Me</h5>
+                        <p><a href="mailto:habibsaleemoffical@gmail.com">habibsaleemoffical@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="detail-text">
+                        <h5>Location</h5>
+                        <p>Karachi, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="detail-text">
+                        <h5>Availability</h5>
+                        <p>Open for Freelance Projects</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="social-icon" title="Behance"><i class="fa-brands fa-behance"></i></a>
+                    <a href="https://wa.me/923306669162" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="http://facebook.com/Habib-ur-Rehman" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="social-icon" title="Freelancer">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.096 3.076l1.634 2.292L24 3.076M5.503 20.924l4.474-4.374-2.692-2.89m6.133-10.584L11.027 5.23l4.022.15M4.124 3.077l.857 1.76 4.734.294m-3.058 7.072l3.497-6.522L0 5.13m7.064 7.485l3.303 3.548 3.643-3.57 1.13-6.652-4.439-.228Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="mailto:habibsaleemoffical@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form" id="portfolioForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Project Type</label>
+                    <input type="text" id="subject" class="form-input" placeholder="e.g. Packaging, Social Media Posts, Banner Design">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" class="form-input" placeholder="Tell me briefly about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="justify-content: center; width: 100%; margin-top: 10px;"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Thank you! Your message has been sent successfully.</span>
+    </div>
+
+    <footer>
+        <div>&copy; 2026 Habib-ur-Rehman. All Rights Reserved.</div>
+        <div>Canva Design & AI-Powered Visuals — Karachi, Pakistan</div>
+    </footer>
+
+    <script>
+        // Preloader: count 0-100%, fill ring, then fade out
+        document.documentElement.classList.add('loading');
+        (function () {
+            const circumference = 339.292;
+            const progressEl = document.getElementById('loaderProgress');
+            const percentEl = document.getElementById('loaderPercentNum');
+            const preloader = document.getElementById('preloader');
+            let pct = 0;
+            const duration = 1800;
+            const stepTime = 16;
+            const totalSteps = duration / stepTime;
+            let step = 0;
+
+            const interval = setInterval(() => {
+                step++;
+                pct = Math.min(100, Math.round((step / totalSteps) * 100));
+                percentEl.textContent = pct;
+                progressEl.style.strokeDashoffset = circumference - (circumference * pct) / 100;
+                if (pct >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.classList.add('hide');
+                        document.documentElement.classList.remove('loading');
+                    }, 300);
+                }
+            }, stepTime);
+        })();
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            document.getElementById('portfolioForm').reset();
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        }
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
