@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habib-ur-Rehman | Logo, Packaging & Poster Designer | Canva & AI Visual Designer</title>
+    <meta name="description" content="Habib-ur-Rehman, Karachi-based Canva & AI-powered visual designer. Logo design, product packaging, posters, banners and social media creatives.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0c0a17;
+            --bg-card: #171327;
+            --bg-card-hover: #211c36;
+            --accent-purple: #7d2ae8;
+            --accent-cyan: #00c4cc;
+            --accent-magenta: #e82a78;
+            --text-main: #f3f1f8;
+            --text-muted: #a19bb5;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-canva: linear-gradient(135deg, #7d2ae8 0%, #00c4cc 100%);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --whatsapp: #25d366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        img { max-width: 100%; display: block; }
+        a { -webkit-tap-highlight-color: transparent; }
+        ::selection { background: var(--accent-purple); color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #2a2444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+        /* ---------- Custom cursor (small, desktop only) ---------- */
+        .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 10000; border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; will-change: transform; }
+        .cursor-dot { width: 6px; height: 6px; background: var(--accent-cyan); margin: -3px 0 0 -3px; }
+        .cursor-ring { width: 30px; height: 30px; border: 1.5px solid rgba(125, 42, 232, 0.7); margin: -15px 0 0 -15px; transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background 0.25s ease; }
+        body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { opacity: 1; }
+        body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor input, body.has-cursor textarea { cursor: none; }
+        body.cursor-hover .cursor-ring { width: 46px; height: 46px; margin: -23px 0 0 -23px; border-color: var(--accent-cyan); background: rgba(0, 196, 204, 0.08); }
+        body.cursor-hover .cursor-dot { background: var(--accent-magenta); }
+
+        /* ---------- Scroll progress ---------- */
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--gradient-canva); z-index: 1100; }
+
+        /* ---------- Preloader ---------- */
+        html.loading, html.loading body { overflow: hidden; height: 100%; }
+        #preloader { position: fixed; inset: 0; z-index: 9999; background: var(--bg-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        #preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-ring-wrap { position: relative; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
+        .loader-ring-wrap svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-90deg); animation: loaderSpin 2.2s linear infinite; }
+        .loader-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 6; }
+        .loader-progress { fill: none; stroke: url(#loaderGradient); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 339.292; stroke-dashoffset: 339.292; transition: stroke-dashoffset 0.15s linear; }
+        @keyframes loaderSpin { 100% { transform: rotate(270deg); } }
+        .loader-core { width: 78px; height: 78px; border-radius: 50%; background: var(--gradient-canva); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(125, 42, 232, 0.45); z-index: 1; animation: loaderPulse 1.8s ease-in-out infinite; }
+        .loader-core span { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: #fff; letter-spacing: -0.5px; }
+        @keyframes loaderPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .loader-percent { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.6rem; color: #fff; letter-spacing: 1px; }
+        .loader-percent span { background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .loader-label { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+
+        /* ---------- Background glow ---------- */
+        .bg-glow { position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.2; z-index: -1; pointer-events: none; animation: pulseGlow 9s ease-in-out infinite alternate; }
+        .glow-1 { width: 450px; height: 450px; background: var(--accent-purple); top: -120px; left: -120px; }
+        .glow-2 { width: 400px; height: 400px; background: var(--accent-cyan); bottom: 10%; right: -80px; animation-delay: -4s; }
+        @keyframes pulseGlow { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(30px, -20px); } }
+
+        /* ---------- Header / Navbar ---------- */
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 20px 8%; background: rgba(12, 10, 23, 0.6); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        header.scrolled { background: rgba(12, 10, 23, 0.92); border-bottom-color: var(--border-color); padding-top: 14px; padding-bottom: 14px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; color: #fff; line-height: 1; transition: var(--transition); }
+        .logo .dot { background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo:hover { letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: var(--transition); position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%); width: 0%; height: 2px; background: var(--gradient-canva); transition: width 0.35s ease; border-radius: 2px; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-btns { display: flex; align-items: center; gap: 15px; }
+        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+
+        .btn-primary { background: var(--gradient-canva); color: #fff; padding: 12px 26px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(125, 42, 232, 0.35); transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; position: relative; overflow: hidden; }
+        .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent); transition: left 0.6s ease; }
+        .btn-primary:hover::before { left: 120%; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(125, 42, 232, 0.5); }
+        .btn-outline { background: transparent; color: #fff; padding: 11px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.92rem; border: 1px solid rgba(255, 255, 255, 0.2); transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-outline:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0, 196, 204, 0.06); transform: translateY(-3px); }
+        .btn-freelancer { background: #29b2fe; color: #fff; padding: 11px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-freelancer:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(41, 178, 254, 0.45); }
+
+        /* ---------- Reveal animations ---------- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .reveal.from-left { transform: translateX(-50px); }
+        .reveal.from-right { transform: translateX(50px); }
+        .reveal.from-scale { transform: scale(0.94); }
+        .reveal.in { opacity: 1; transform: none; }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* ---------- Hero ---------- */
+        .hero { min-height: 100vh; padding: 150px 8% 90px; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 60px; position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; background: rgba(125, 42, 232, 0.15); border: 1px solid rgba(125, 42, 232, 0.35); border-radius: 20px; color: var(--accent-cyan); font-size: 0.85rem; font-weight: 600; margin-bottom: 22px; }
+        .hero-title { font-size: 3.6rem; font-weight: 800; line-height: 1.12; margin-bottom: 22px; letter-spacing: -1px; font-family: 'Space Grotesk', sans-serif; }
+        .text-gradient { background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: gradientShift 6s linear infinite; }
+        @keyframes gradientShift { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 36px; max-width: 580px; line-height: 1.75; }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        /* Marquee (replaces the static tags under the hero buttons) */
+        .marquee { margin-top: 36px; overflow: hidden; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 16px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+        .marquee-track { display: flex; width: max-content; animation: marquee 24s linear infinite; }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        .marquee-item { display: flex; align-items: center; gap: 22px; padding-right: 22px; font-size: 0.95rem; font-weight: 600; color: var(--text-main); white-space: nowrap; }
+        .marquee-item .sep { width: 7px; height: 7px; border-radius: 50%; background: var(--gradient-canva); flex-shrink: 0; }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+
+        .hero-visual { position: relative; display: flex; justify-content: center; }
+        .hero-photo-frame { width: 100%; max-width: 400px; aspect-ratio: 1/1.05; border-radius: 28px; position: relative; padding: 6px; background: var(--gradient-canva); box-shadow: 0 25px 60px rgba(0,0,0,0.5); transform: rotate(-2deg); transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .hero-photo-frame:hover { transform: rotate(0deg) scale(1.02); }
+        .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; background: #131021; }
+        .floating-badge { position: absolute; background: rgba(23, 19, 39, 0.92); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px); padding: 10px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); animation: float 4s ease-in-out infinite alternate; }
+        .fb-1 { top: 10px; right: -14px; }
+        .fb-2 { bottom: 20px; left: -24px; animation-delay: 2s; }
+        @keyframes float { 0% { transform: translateY(0px); } 100% { transform: translateY(-12px); } }
+        .fb-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: #fff; }
+        .scroll-hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: var(--text-muted); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .scroll-hint i { animation: bounceDown 1.8s ease-in-out infinite; }
+        @keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+        /* ---------- Stats ---------- */
+        .stats-section { padding: 42px 8%; margin: 20px 8% 70px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); }
+        .stat-item { padding: 15px; position: relative; }
+        .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: var(--border-color); }
+        .stat-number { font-size: 2.8rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: var(--gradient-canva); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+        .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+
+        /* ---------- Section shared ---------- */
+        section { position: relative; }
+        .section-header { text-align: center; max-width: 680px; margin: 0 auto 55px; }
+        .section-tag { color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 15px; line-height: 1.2; }
+        .section-desc { color: var(--text-muted); font-size: 1rem; }
+
+        /* ---------- About ---------- */
+        .about { padding: 90px 8%; }
+        .about-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 28px; padding: 55px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .about-top { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 10px; }
+        .about-top p { flex: 1; min-width: 280px; }
+        .about-quote { font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 700; line-height: 1.3; min-width: 280px; flex: 1; }
+        .about-pills { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0; }
+        .about-pill { padding: 8px 18px; border-radius: 30px; border: 1px solid rgba(0, 196, 204, 0.3); background: rgba(0, 196, 204, 0.06); color: var(--accent-cyan); font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
+        .about-pill:hover { background: rgba(0, 196, 204, 0.15); transform: translateY(-2px); }
+        .about-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 30px; }
+        .feature-box { display: flex; gap: 18px; padding: 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); transition: var(--transition); }
+        .feature-box:hover { background: var(--bg-card-hover); transform: translateY(-4px); border-color: rgba(125, 42, 232, 0.4); }
+        .fb-ic { min-width: 48px; height: 48px; border-radius: 14px; background: var(--gradient-canva); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; }
+        .feature-box h4 { font-size: 1.05rem; margin-bottom: 4px; }
+        .feature-box p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ---------- Achievements ---------- */
+        .achievements { padding: 90px 8%; background: linear-gradient(180deg, transparent, rgba(125, 42, 232, 0.05), transparent); }
+        .cert-wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .cert-frame { position: relative; border-radius: 22px; padding: 6px; background: var(--gradient-canva); cursor: zoom-in; box-shadow: 0 25px 60px rgba(0,0,0,0.45); transition: transform 0.5s ease; }
+        .cert-frame:hover { transform: translateY(-6px) rotate(-0.5deg); }
+        .cert-frame img { width: 100%; border-radius: 17px; background: #fff; }
+        .cert-frame::after { content: 'Click to view'; position: absolute; bottom: 14px; right: 14px; background: rgba(12,10,23,0.8); color: #fff; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; opacity: 0; transition: opacity 0.3s ease; }
+        .cert-frame:hover::after { opacity: 1; }
+        .cert-info h3 { font-size: 1.9rem; font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; line-height: 1.25; }
+        .cert-info p { color: var(--text-muted); margin-bottom: 22px; }
+        .cert-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+        .cert-meta div { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px 16px; }
+        .cert-meta small { display: block; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .cert-meta strong { font-size: 0.95rem; }
+        .achieve-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+        .achieve-badges span { font-size: 0.82rem; padding: 7px 14px; border-radius: 20px; background: rgba(232, 42, 120, 0.1); border: 1px solid rgba(232, 42, 120, 0.3); color: #ff7fb1; }
+
+        .lightbox { position: fixed; inset: 0; background: rgba(5, 4, 12, 0.92); display: flex; align-items: center; justify-content: center; z-index: 3000; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease; padding: 20px; }
+        .lightbox.open { opacity: 1; visibility: visible; }
+        .lightbox img { max-width: min(900px, 95vw); max-height: 90vh; border-radius: 14px; transform: scale(0.9); transition: transform 0.35s ease; }
+        .lightbox.open img { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 22px; right: 28px; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+
+        /* ---------- Portfolio ---------- */
+        .portfolio { padding: 90px 8%; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .portfolio-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 22px; overflow: hidden; transition: var(--transition); }
+        .portfolio-card:hover { transform: translateY(-8px); border-color: rgba(0, 196, 204, 0.35); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+        .portfolio-img { width: 100%; height: 280px; position: relative; overflow: hidden; background: #151124; }
+        .portfolio-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .portfolio-card:hover .portfolio-img img { transform: scale(1.08); }
+        .portfolio-overlay { position: absolute; inset: 0; background: rgba(12, 10, 23, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+        .overlay-btn { width: 58px; height: 58px; border-radius: 50%; background: var(--gradient-canva); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transform: scale(0.6); transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .portfolio-card:hover .overlay-btn { transform: scale(1); }
+        .portfolio-info { padding: 22px 24px; }
+        .portfolio-category { font-size: 0.75rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+        .portfolio-title { font-size: 1.1rem; margin-top: 6px; font-family: 'Space Grotesk', sans-serif; }
+
+        .behance-banner { margin: 0 8% 90px; padding: 45px 50px; background: linear-gradient(120deg, rgba(125,42,232,0.25), rgba(0,196,204,0.18)); border: 1px solid rgba(255,255,255,0.1); border-radius: 26px; display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+        .behance-info h3 { font-size: 1.8rem; font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px; }
+        .behance-info p { color: #d6d1e6; max-width: 560px; }
+        .btn-behance { background: #fff; color: #0c0a17; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: var(--transition); }
+        .btn-behance:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
+
+        /* ---------- Services (redesigned cards) ---------- */
+        .services { padding: 90px 8%; background: linear-gradient(180deg, transparent, rgba(0, 196, 204, 0.04), transparent); }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+        .service-card { position: relative; background: linear-gradient(160deg, #1c1734 0%, #13101f 100%); border: 1px solid var(--border-color); border-radius: 22px; padding: 34px 26px 30px; overflow: hidden; transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.45s ease, box-shadow 0.45s ease; display: flex; flex-direction: column; }
+        .service-card::before { content: ''; position: absolute; top: -40%; right: -40%; width: 180px; height: 180px; border-radius: 50%; background: var(--gradient-canva); filter: blur(60px); opacity: 0; transition: opacity 0.5s ease; }
+        .service-card::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 0%; background: var(--gradient-canva); transition: width 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .service-card:hover { transform: translateY(-8px); border-color: rgba(125, 42, 232, 0.35); box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4); }
+        .service-card:hover::before { opacity: 0.25; }
+        .service-card:hover::after { width: 100%; }
+        .service-card > * { position: relative; z-index: 1; }
+        .service-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        .service-icon { width: 60px; height: 60px; border-radius: 18px; background: rgba(0, 196, 204, 0.1); border: 1px solid rgba(0, 196, 204, 0.25); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.4s ease, color 0.4s ease; }
+        .service-card:hover .service-icon { background: var(--gradient-canva); color: #fff; border-color: transparent; transform: rotate(-8deg) scale(1.08); }
+        .service-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: rgba(255, 255, 255, 0.15); transition: color 0.4s ease; }
+        .service-card:hover .service-num { color: var(--accent-cyan); }
+        .service-title { font-size: 1.2rem; margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif; }
+        .service-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; flex: 1; }
+        .service-link { margin-top: 22px; font-size: 0.85rem; font-weight: 600; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; opacity: 0.6; transition: opacity 0.3s ease, gap 0.3s ease; }
+        .service-card:hover .service-link { opacity: 1; gap: 12px; color: var(--accent-cyan); }
+
+        /* ---------- Contact ---------- */
+        .contact { padding: 90px 8%; }
+        .contact-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 30px; display: grid; grid-template-columns: 1fr 1.1fr; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.35); }
+        .contact-info { padding: 60px; background: linear-gradient(160deg, rgba(125,42,232,0.2), rgba(0,196,204,0.08)); }
+        .contact-info-title { font-size: 2.2rem; font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; line-height: 1.2; }
+        .contact-info-desc { color: #d6d1e6; margin-bottom: 36px; }
+        .contact-detail { display: flex; gap: 16px; margin-bottom: 24px; align-items: center; }
+        .detail-icon { width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); font-size: 1.1rem; flex-shrink: 0; transition: var(--transition); }
+        .contact-detail:hover .detail-icon { background: var(--gradient-canva); color: #fff; transform: scale(1.08); }
+        .detail-text h5 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+        .detail-text p, .detail-text a { color: #fff; text-decoration: none; font-weight: 500; }
+        .detail-text a:hover { color: var(--accent-cyan); }
+        .social-links { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .social-icon { width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.08); color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: var(--transition); }
+        .social-icon:hover { background: var(--gradient-canva); transform: translateY(-4px) rotate(8deg); }
+        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+        .form-input { background: rgba(12, 10, 23, 0.6); border: 1px solid var(--border-color); color: #fff; padding: 14px 18px; border-radius: 14px; font-size: 0.95rem; transition: var(--transition); outline: none; resize: vertical; }
+        .form-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 4px rgba(125, 42, 232, 0.2); }
+        textarea.form-input { min-height: 130px; }
+        .form-submit { justify-content: center; width: 100%; margin-top: 6px; }
+
+        .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(30px); background: #1d2a1f; border: 1px solid rgba(37,211,102,0.4); color: #d7ffe4; padding: 14px 24px; border-radius: 14px; display: flex; align-items: center; gap: 12px; opacity: 0; visibility: hidden; transition: var(--transition); z-index: 2000; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .toast i { color: var(--whatsapp); font-size: 1.2rem; }
+
+        /* ---------- WhatsApp floating widget ---------- */
+        .wa-widget { position: fixed; bottom: 26px; right: 26px; z-index: 1500; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+        .wa-bubble { position: relative; background: #fff; color: #1c1c1c; padding: 14px 42px 14px 16px; border-radius: 16px 16px 4px 16px; max-width: 270px; font-size: 0.88rem; line-height: 1.5; box-shadow: 0 12px 30px rgba(0,0,0,0.35); opacity: 0; transform: translateY(15px) scale(0.95); transform-origin: bottom right; transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); pointer-events: none; }
+        .wa-bubble.show { opacity: 1; transform: none; pointer-events: auto; }
+        .wa-bubble strong { display: block; color: #128c4a; font-size: 0.78rem; margin-bottom: 4px; }
+        .wa-bubble .wa-close { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #888; font-size: 0.9rem; cursor: pointer; }
+        .wa-typing { display: none; gap: 4px; padding: 4px 0; }
+        .wa-typing.show { display: flex; }
+        .wa-typing span { width: 7px; height: 7px; background: #999; border-radius: 50%; animation: typing 1.2s infinite; }
+        .wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-5px); opacity: 1; } }
+        .wa-btn { width: 62px; height: 62px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; text-decoration: none; box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45); position: relative; transition: transform 0.3s ease; }
+        .wa-btn:hover { transform: scale(1.1); }
+        .wa-btn::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--whatsapp); animation: waPulse 2.2s infinite; }
+        @keyframes waPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+        .wa-count { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-magenta); color: #fff; font-size: 0.65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+        /* ---------- Footer ---------- */
+        footer { padding: 36px 8%; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links { display: flex; gap: 18px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent-cyan); }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1100px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { gap: 20px; }
+        }
+        @media (max-width: 960px) {
+            .menu-toggle { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: var(--bg-card); flex-direction: column; padding: 100px 40px; gap: 28px; transition: right 0.4s ease; box-shadow: -20px 0 40px rgba(0,0,0,0.4); }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.1rem; }
+            .hero { grid-template-columns: 1fr; padding-top: 130px; text-align: center; min-height: auto; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-visual { margin-top: 30px; }
+            .fb-1 { right: 0; }
+            .fb-2 { left: 0; }
+            .scroll-hint { display: none; }
+            .stats-section { grid-template-columns: 1fr; margin: 20px 6% 60px; }
+            .stat-item::after { display: none; }
+            .about-features { grid-template-columns: 1fr; }
+            .cert-wrap { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-box { grid-template-columns: 1fr; }
+            .contact-info, .contact-form { padding: 40px; }
+            .behance-banner { margin: 0 6% 70px; padding: 35px; }
+        }
+        @media (max-width: 640px) {
+            header { padding: 16px 6%; }
+            .logo { font-size: 1.6rem; }
+            .hero-title { font-size: 2.3rem; }
+            .section-title { font-size: 1.9rem; }
+            .about, .achievements, .portfolio, .services, .contact { padding-left: 6%; padding-right: 6%; }
+            .about-card { padding: 30px 22px; }
+            .portfolio-grid, .services-grid { grid-template-columns: 1fr; }
+            .cert-meta { grid-template-columns: 1fr; }
+            .nav-btns .btn-primary { display: none; }
+            .contact-info-title { font-size: 1.8rem; }
+            footer { justify-content: center; text-align: center; }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot, .cursor-ring { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring-wrap">
+            <svg viewBox="0 0 120 120">
+                <defs>
+                    <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#7d2ae8"/>
+                        <stop offset="100%" stop-color="#00c4cc"/>
+                    </linearGradient>
+                </defs>
+                <circle class="loader-track" cx="60" cy="60" r="54"/>
+                <circle class="loader-progress" id="loaderProgress" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="loader-core"><span>HR</span></div>
+        </div>
+        <div class="loader-percent"><span id="loaderPercentNum">0</span>%</div>
+        <div class="loader-label">Loading Portfolio</div>
+    </div>
+
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- NAVBAR -->
+    <header id="siteHeader">
+        <a href="#home" class="logo">HR<span class="dot">.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-btns">
+            <a href="#contact" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge reveal from-left"><i class="fa-solid fa-sparkles"></i> Canva Designer & AI-Powered Visual Designer</div>
+            <h1 class="hero-title reveal delay-1">Crafting <span class="text-gradient">Visual Perfection</span> For Brands.</h1>
+            <p class="hero-desc reveal delay-2">Hi, I'm Habib-ur-Rehman, a creative Canva &amp; AI-powered visual designer based in Karachi, Pakistan. I design logos, product packaging, posters, banners, and social media creatives that combine strategy with AI-assisted workflows.</p>
+            <div class="hero-actions reveal delay-3">
+                <a href="#portfolio" class="btn-primary"><i class="fa-solid fa-layer-group"></i> Explore My Work</a>
+                <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="btn-outline"><i class="fa-brands fa-behance"></i> Behance</a>
+                <a href="#" target="_blank" class="btn-freelancer freelancer-link"><i class="fa-solid fa-user-tie"></i> Freelancer</a>
+            </div>
+            <div class="marquee reveal delay-4" aria-label="Services">
+                <div class="marquee-track">
+                    <div class="marquee-item">Logo Design <span class="sep"></span> Product Packaging <span class="sep"></span> Poster Design <span class="sep"></span> Banner Design <span class="sep"></span> Social Media Graphics <span class="sep"></span> AI Visual Design <span class="sep"></span></div>
+                    <div class="marquee-item">Logo Design <span class="sep"></span> Product Packaging <span class="sep"></span> Poster Design <span class="sep"></span> Banner Design <span class="sep"></span> Social Media Graphics <span class="sep"></span> AI Visual Design <span class="sep"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual reveal from-right delay-2">
+            <div class="hero-photo-frame">
+                <img src="1794389531715_dwe__2_.png" alt="Habib-ur-Rehman, Canva & AI Visual Designer">
+            </div>
+            <div class="floating-badge fb-1">
+                <div class="fb-icon" style="background: var(--accent-purple);"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Freelance</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Open for Projects</div>
+                </div>
+            </div>
+            <div class="floating-badge fb-2">
+                <div class="fb-icon" style="background: var(--accent-cyan);"><i class="fa-solid fa-map-pin"></i></div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Karachi, PK</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Visual Designer</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll</span><i class="fa-solid fa-chevron-down"></i></div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section reveal from-scale">
+        <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-label">Happy & Satisfied Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="20">0</span>+</div>
+            <div class="stat-label">Graphics & Assets Completed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+            <div class="stat-label">Projects Delivered On-Time</div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <span class="section-tag">About Habib-ur-Rehman</span>
+            <h2 class="section-title">Bringing Creative Ideas to Life with Canva & AI</h2>
+            <p class="section-desc">A quick look at how I work and what I bring to every project.</p>
+        </div>
+        <div class="about-card reveal">
+            <div class="about-top">
+                <div class="about-quote">"Great design isn't just<br>seen, it's remembered."</div>
+                <p style="color: var(--text-muted); line-height: 1.8; margin: 0;">I help businesses transform ideas into premium visual experiences through original, purpose-driven design and AI-powered creative solutions. Every project is designed from scratch, combining creative strategy, modern design principles, and AI-assisted workflows to deliver visuals that reflect each brand's identity and goals.</p>
+            </div>
+            <p style="color: var(--text-muted); line-height: 1.8; margin-top: 15px;">My expertise spans logo design, product packaging, posters, banners, social media creatives, and marketing materials, all 100% original and customized to your exact requirements.</p>
+
+            <div class="about-pills">
+                <span class="about-pill">AI-Powered Design</span>
+                <span class="about-pill">Logo Design</span>
+                <span class="about-pill">Product Packaging</span>
+                <span class="about-pill">Posters & Banners</span>
+                <span class="about-pill">Social Media Creatives</span>
+            </div>
+
+            <div class="about-features">
+                <div class="feature-box reveal delay-1">
+                    <div class="fb-ic"><i class="fa-solid fa-palette"></i></div>
+                    <div><h4>Canva Magic</h4><p>Fully editable, structured templates for easy customization.</p></div>
+                </div>
+                <div class="feature-box reveal delay-2">
+                    <div class="fb-ic"><i class="fa-solid fa-bolt"></i></div>
+                    <div><h4>Fast Turnaround</h4><p>Quick delivery without compromising on visual polish.</p></div>
+                </div>
+                <div class="feature-box reveal delay-3">
+                    <div class="fb-ic"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div><h4>High Conversion</h4><p>Designs tuned for marketing performance and brand recall.</p></div>
+                </div>
+                <div class="feature-box reveal delay-4">
+                    <div class="fb-ic"><i class="fa-solid fa-headset"></i></div>
+                    <div><h4>100% Satisfaction</h4><p>Dedicated revisions and friendly client communication.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="achievements" id="achievements">
+        <div class="section-header reveal">
+            <span class="section-tag">Achievements & Certifications</span>
+            <h2 class="section-title">Certified & Continuously Learning</h2>
+            <p class="section-desc">Verified credentials that back up my design and AI skills.</p>
+        </div>
+        <div class="cert-wrap">
+            <div class="cert-frame reveal from-left" id="certFrame">
+                <img src="1794392279885_ad.jpeg" alt="Canva Design School AI Essentials 2026 Certificate of Completion">
+            </div>
+            <div class="cert-info reveal from-right delay-2">
+                <h3>AI Essentials 2026<br><span class="text-gradient">Canva Design School</span></h3>
+                <p>Certificate of completion for the AI Essentials 2026 course, covering AI-powered design workflows and creative tools.</p>
+                <div class="cert-meta">
+                    <div><small>Issue Date</small><strong>October 16, 2026</strong></div>
+                    <div><small>Credential ID</small><strong>47c3c3</strong></div>
+                </div>
+                <div class="achieve-badges">
+                    <span><i class="fa-solid fa-award"></i> Canva Certified</span>
+                    <span><i class="fa-solid fa-wand-magic-sparkles"></i> AI Essentials</span>
+                    <span><i class="fa-solid fa-graduation-cap"></i> Aptech Software Engineering (Ongoing)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <img src="1794392279885_ad.jpeg" alt="Certificate enlarged">
+    </div>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <span class="section-tag">Portfolio Showcase</span>
+            <h2 class="section-title">My Recent Featured Work</h2>
+            <p class="section-desc">Live projects straight from my Behance portfolio.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal delay-1">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/26ef5c254595989.Y3JvcCw0MzMsMzM4LDU2MiwxNTE.jpg" alt="Engro Steel Mills">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/254595989/Engro-Steel-Mills" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Corporate / Industrial</span>
+                    <h3 class="portfolio-title">Engro Steel Mills</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-2">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/6648e0253474143.Y3JvcCwxMjU0LDk4MCwwLDA.png" alt="Delicious Cupcake Muffin Social Media Banner Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/253474143/Delicious-Cupcake-Muffin-Social-Media-Banner-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Social Media</span>
+                    <h3 class="portfolio-title">Delicious Cupcake Muffin Social Banner</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-3">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e84726253222471.Y3JvcCw0NjQsMzYzLDQ0NCw2MDM.png" alt="Red Bull AI-Powered Energy Drink Advertising Poster">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/253222471/Red-Bull-AI-Powered-Energy-Drink-Advertising-Poster" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">AI-Powered Ad</span>
+                    <h3 class="portfolio-title">Red Bull AI-Powered Energy Poster</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-1">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/3d7fbd252681579.Y3JvcCw1MTUsNDAzLDM4NCwzMTE.png" alt="Fanta Orange Refreshing Citrus Energy">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252681579/Fanta-Orange-A-Burst-of-Refreshing-Citrus-Energy" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Fanta Orange, Citrus Energy</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-2">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/727378252616481.Y3JvcCwxNTg2LDEyNDEsMCw1MDI.png" alt="Premium Fragrance Promotional Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252616481/Premium-Fragrance-Promotional-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Premium Fragrance Promotional Design</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-3">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/23584c252262997.Y3JvcCwxNzkyLDE0MDIsNjIxLDMzNw.png" alt="Premium Pepsi Product Advertisement Poster">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252262997/Premium-Pepsi-Product-Advertisement-Poster" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Product Ad</span>
+                    <h3 class="portfolio-title">Premium Pepsi Advertisement Poster</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal delay-1">
+                <div class="portfolio-img">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/23cd08252020451.Y3JvcCwxMDg2LDg0OSwzODEsNDE5.png" alt="Premium Burger Promotional Poster Design">
+                    <div class="portfolio-overlay">
+                        <a href="https://www.behance.net/gallery/252020451/Premium-Burger-Promotional-Poster-Design" target="_blank" class="overlay-btn" title="View on Behance"><i class="fa-brands fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-category">Social Media</span>
+                    <h3 class="portfolio-title">Premium Burger Promotional Poster</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEHANCE BANNER -->
+    <section class="behance-banner reveal from-scale">
+        <div class="behance-info">
+            <h3>Explore Full Portfolio on Behance</h3>
+            <p>Check out my latest case studies, raw design files, and complete brand design projects live on my Behance profile.</p>
+        </div>
+        <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="btn-behance"><i class="fa-brands fa-behance"></i> Visit Behance Portfolio</a>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <span class="section-tag">What I Offer</span>
+            <h2 class="section-title">Design Solutions Crafted For You</h2>
+            <p class="section-desc">Elevating your brand with creative, tailored graphic design services.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal delay-1">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <span class="service-num">01</span>
+                </div>
+                <h3 class="service-title">Logo Design</h3>
+                <p class="service-desc">Unique, memorable logos that represent your brand identity and stand out in any market.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <span class="service-num">02</span>
+                </div>
+                <h3 class="service-title">Product Packaging</h3>
+                <p class="service-desc">Clean, shelf-ready packaging design that makes products stand out and builds brand trust.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-image"></i></div>
+                    <span class="service-num">03</span>
+                </div>
+                <h3 class="service-title">Poster Design</h3>
+                <p class="service-desc">Bold promotional and event posters designed to grab attention and communicate your message fast.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-4">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+                    <span class="service-num">04</span>
+                </div>
+                <h3 class="service-title">Banner Design</h3>
+                <p class="service-desc">High-CTR web, social, and print banners built for campaigns that need to convert.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-1">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-hashtag"></i></div>
+                    <span class="service-num">05</span>
+                </div>
+                <h3 class="service-title">Social Media Graphics</h3>
+                <p class="service-desc">Eye-catching posts, stories, reel covers, and carousels crafted to boost engagement.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <span class="service-num">06</span>
+                </div>
+                <h3 class="service-title">Advertising Creatives</h3>
+                <p class="service-desc">Scroll-stopping ad creatives for Meta, Google, and print, built to convert, not just look good.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <span class="service-num">07</span>
+                </div>
+                <h3 class="service-title">AI-Powered Visual Design</h3>
+                <p class="service-desc">AI-assisted creative workflows that speed up concepting while keeping a human, brand-first touch.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-4">
+                <div class="service-top">
+                    <div class="service-icon"><i class="fa-solid fa-copyright"></i></div>
+                    <span class="service-num">08</span>
+                </div>
+                <h3 class="service-title">Brand Identity</h3>
+                <p class="service-desc">Logos, color systems, and visual guidelines that give your brand a consistent, recognizable look.</p>
+                <a href="#contact" class="service-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-box reveal">
+            <div class="contact-info">
+                <h2 class="contact-info-title">Let's Work <span class="text-gradient">Together</span></h2>
+                <p class="contact-info-desc">Have a logo, packaging, poster, or banner project in mind? Send me a message and let's create something extraordinary!</p>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="detail-text">
+                        <h5>Call / WhatsApp</h5>
+                        <p><a href="https://wa.me/923306669162" target="_blank">0330 6669162</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="detail-text">
+                        <h5>Email Me</h5>
+                        <p><a href="mailto:habibsaleemoffical@gmail.com">habibsaleemoffical@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="detail-text">
+                        <h5>Location</h5>
+                        <p>Karachi, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="detail-text">
+                        <h5>Availability</h5>
+                        <p>Open for Freelance Projects</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.behance.net/habibsaleem0118" target="_blank" class="social-icon" title="Behance"><i class="fa-brands fa-behance"></i></a>
+                    <a href="https://wa.me/923306669162" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="http://facebook.com/Habib-ur-Rehman" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="social-icon freelancer-link" title="Freelancer">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.096 3.076l1.634 2.292L24 3.076M5.503 20.924l4.474-4.374-2.692-2.89m6.133-10.584L11.027 5.23l4.022.15M4.124 3.077l.857 1.76 4.734.294m-3.058 7.072l3.497-6.522L0 5.13m7.064 7.485l3.303 3.548 3.643-3.57 1.13-6.652-4.439-.228Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="mailto:habibsaleemoffical@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form" id="portfolioForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Project Type</label>
+                    <input type="text" id="subject" class="form-input" placeholder="e.g. Logo, Packaging, Poster, Banner">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" class="form-input" placeholder="Tell me briefly about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit"><i class="fa-brands fa-whatsapp"></i> Send via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- WhatsApp floating widget with automated greeting -->
+    <div class="wa-widget">
+        <div class="wa-bubble" id="waBubble">
+            <button class="wa-close" id="waClose" aria-label="Close message"><i class="fa-solid fa-xmark"></i></button>
+            <strong>Habib-ur-Rehman</strong>
+            <div class="wa-typing" id="waTyping"><span></span><span></span><span></span></div>
+            <div id="waText">Hi there! 👋 How can I help you today? Tell me about your logo, packaging, poster, or banner project.</div>
+        </div>
+        <a href="https://wa.me/923306669162?text=Hi%20Habib%2C%20I%27d%20like%20to%20discuss%20a%20design%20project." target="_blank" class="wa-btn" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="wa-count">1</span>
+        </a>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Opening WhatsApp with your project details...</span>
+    </div>
+
+    <footer>
+        <div>&copy; 2026 Habib-ur-Rehman. All Rights Reserved.</div>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div>Canva Design & AI-Powered Visuals, Karachi, Pakistan</div>
+    </footer>
+
+    <script>
+        /* ========== CONFIG: replace with your real links ========== */
+        const FREELANCER_URL = '#';   // <- paste your Freelancer profile link here
+        const WHATSAPP_NUMBER = '923306669162';
+
+        document.querySelectorAll('.freelancer-link').forEach(el => el.href = FREELANCER_URL);
+
+        /* ========== Preloader ========== */
+        document.documentElement.classList.add('loading');
+        (function () {
+            const circumference = 339.292;
+            const progressEl = document.getElementById('loaderProgress');
+            const percentEl = document.getElementById('loaderPercentNum');
+            const preloader = document.getElementById('preloader');
+            let step = 0;
+            const totalSteps = 1800 / 16;
+            const interval = setInterval(() => {
+                step++;
+                const pct = Math.min(100, Math.round((step / totalSteps) * 100));
+                percentEl.textContent = pct;
+                progressEl.style.strokeDashoffset = circumference - (circumference * pct) / 100;
+                if (pct >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.classList.add('hide');
+                        document.documentElement.classList.remove('loading');
+                        startWhatsAppGreeting();
+                    }, 300);
+                }
+            }, 16);
+        })();
+
+        /* ========== Custom cursor ========== */
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.body.classList.add('has-cursor');
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+            document.addEventListener('mousemove', e => {
+                mx = e.clientX; my = e.clientY;
+                dot.style.transform = `translate(${mx}px, ${my}px)`;
+            });
+            (function animateRing() {
+                rx += (mx - rx) * 0.2;
+                ry += (my - ry) * 0.2;
+                ring.style.transform = `translate(${rx}px, ${ry}px)`;
+                requestAnimationFrame(animateRing);
+            })();
+            document.querySelectorAll('a, button, input, textarea').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+
+        /* ========== Scroll progress, header state, active nav ========== */
+        const header = document.getElementById('siteHeader');
+        const progress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = (scrolled / max * 100) + '%';
+            header.classList.toggle('scrolled', scrolled > 40);
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(section => {
+                if (scrolled >= section.offsetTop - 160) current = section.id;
+            });
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+            });
+        }, { passive: true });
+
+        /* ========== Mobile menu ========== */
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuToggle.querySelector('i').className = navLinks.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuToggle.querySelector('i').className = 'fa-solid fa-bars';
+        }));
+
+        /* ========== Reveal on scroll ========== */
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* ========== Counters ========== */
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = +el.dataset.target;
+                const start = performance.now();
+                (function tick(now) {
+                    const t = Math.min((now - start) / 1600, 1);
+                    el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+                    if (t < 1) requestAnimationFrame(tick);
+                })(start);
+                counterObserver.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        /* ========== Certificate lightbox ========== */
+        const lightbox = document.getElementById('lightbox');
+        document.getElementById('certFrame').addEventListener('click', () => lightbox.classList.add('open'));
+        document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+        /* ========== WhatsApp automated greeting ========== */
+        const waBubble = document.getElementById('waBubble');
+        const waTyping = document.getElementById('waTyping');
+        const waText = document.getElementById('waText');
+        const waMessages = [
+            'Hi there! 👋 How can I help you today? Tell me about your logo, packaging, poster, or banner project.',
+            'Share your project details and I will get back to you quickly. 🚀'
+        ];
+        let waTimer;
+        function startWhatsAppGreeting() {
+            if (sessionStorage.getItem('waDismissed')) return;
+            setTimeout(() => showWA(0), 1800);
+        }
+        function showWA(index) {
+            waBubble.classList.remove('show');
+            waTyping.classList.add('show');
+            setTimeout(() => {
+                waTyping.classList.remove('show');
+                waText.textContent = waMessages[index];
+                waBubble.classList.add('show');
+            }, 1200);
+            if (index === 0) waTimer = setTimeout(() => showWA(1), 7000);
+        }
+        document.getElementById('waBubble').querySelector('.wa-close');
+        waBubble.insertAdjacentHTML('afterbegin', '');
+        waBubble.querySelector('.wa-close').addEventListener('click', () => {
+            waBubble.classList.remove('show');
+            clearTimeout(waTimer);
+            sessionStorage.setItem('waDismissed', '1');
+        });
+
+        /* ========== Contact form -> WhatsApp with prefilled details ========== */
+        document.getElementById('portfolioForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const type = document.getElementById('subject').value.trim() || 'Not specified';
+            const details = document.getElementById('message').value.trim();
+            const text = `Hi Habib! My name is ${name}.\nEmail: ${email}\nProject Type: ${type}\nDetails: ${details}`;
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
